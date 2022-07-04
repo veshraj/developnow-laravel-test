@@ -3,9 +3,12 @@
 namespace Modules\Auth\Repositories;
 
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Auth\Repositories\Contracts\UserRepositoryInterface;
 use Modules\Auth\Models\User;
 use Modules\Auth\Repositories\Criterias\UserCriteria;
+use Modules\Product\Repositories\Resources\UserResource;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -29,4 +32,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
                            ->first();
     }
     
+    public function resource(Model $instance)
+    : JsonResource {
+        return new UserResource($instance);
+    }
 }

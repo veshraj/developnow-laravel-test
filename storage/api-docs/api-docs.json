@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://my-default-host.com",
+            "url": "http://127.0.0.1:8000/",
             "description": "Developnow Test API Server"
         }
     ],
@@ -106,7 +106,7 @@
                 ]
             }
         },
-        "/api/v1/images": {
+        "/api/images": {
             "post": {
                 "tags": [
                     "Image Upload"
@@ -760,7 +760,7 @@
                 ]
             }
         },
-        "/api/V1/carts": {
+        "/api/v1/carts": {
             "get": {
                 "tags": [
                     "Cart"
@@ -900,7 +900,7 @@
                 ]
             }
         },
-        "/api/V1/carts//{id}": {
+        "/api/v1/carts/{id}": {
             "get": {
                 "tags": [
                     "Cart"
@@ -1149,7 +1149,7 @@
                 ]
             }
         },
-        "/api/V1/clients": {
+        "/api/v1/clients": {
             "get": {
                 "tags": [
                     "Client"
@@ -1289,7 +1289,7 @@
                 ]
             }
         },
-        "/api/V1/clients//{id}": {
+        "/api/v1/clients/{id}": {
             "get": {
                 "tags": [
                     "Client"
@@ -1538,7 +1538,7 @@
                 ]
             }
         },
-        "/api/V1/product-categories": {
+        "/api/v1/product-categories": {
             "get": {
                 "tags": [
                     "ProductCategory"
@@ -1595,9 +1595,7 @@
                         "bearer_token": []
                     }
                 ]
-            }
-        },
-        "/api/v1/product-categories": {
+            },
             "post": {
                 "tags": [
                     "ProductCategory"
@@ -1680,7 +1678,7 @@
                 ]
             }
         },
-        "/apiV1/product-categories//{id}": {
+        "/api/v1/product-categories//{id}": {
             "get": {
                 "tags": [
                     "ProductCategory"
@@ -1931,7 +1929,7 @@
                 ]
             }
         },
-        "/api/V1/products": {
+        "/api/v1/products": {
             "get": {
                 "tags": [
                     "Product"
@@ -2071,7 +2069,7 @@
                 ]
             }
         },
-        "/api/V1/products//{id}": {
+        "/api/v1/products/{id}": {
             "get": {
                 "tags": [
                     "Product"

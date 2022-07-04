@@ -73,7 +73,7 @@ class ImageFileSwaggerController extends SwaggerController
     
     /**
      * @OA\Post(
-     *      path="/api/v1/images",
+     *      path="/api/images",
      *      operationId="api/v1/images-create",
      *      tags={"Image Upload"},
      *      summary="Store new Images",
