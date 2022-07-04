@@ -29,7 +29,7 @@ class ProductService
      */
     public function getList(Request $request)
     {
-        return $this->repository->getPaginate($request);
+        return $this->repository->with(['productCategory'])->getPaginate($request);
     }
     
     /**
@@ -49,7 +49,8 @@ class ProductService
      */
     public function create(Request $request)
     {
-        return $this->repository->create($request->only('name', 'price', 'category_id', 'image', 'inventory_stock'));
+        return $this->repository->with(['productCategory'])->create($request->only('name', 'price', 'category_id',
+            'image', 'inventory_stock'));
     }
     
     /**
@@ -59,8 +60,10 @@ class ProductService
      */
     public function update(Request $request, $id)
     {
-        return $this->repository->update($request->only('name', 'price', 'category_id', 'image', 'inventory_stock'),
-            $id);
+        return $this->repository->with(['productCategory'])
+                                ->update($request->only('name', 'price', 'category_id',
+                                    'image', 'inventory_stock'),
+                                    $id);
     }
     
     /**

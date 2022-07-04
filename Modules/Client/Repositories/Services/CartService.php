@@ -29,7 +29,7 @@ class CartService
      */
     public function getList(Request $request)
     {
-        return $this->repository->getPaginate($request);
+        return $this->repository->with(['product', 'client'])->getPaginate($request);
     }
     
     /**

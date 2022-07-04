@@ -24,13 +24,13 @@ class Cart extends Model
     
     protected $hidden = ['created_at', 'updated_at',];
     
-    public function products()
+    public function product()
     : BelongsTo
     {
         return $this->belongsTo('Modules\Product\Models\Product', 'product_id', 'id');
     }
     
-    public function clients()
+    public function client()
     : BelongsTo
     {
         return $this->belongsTo('Modules\Client\Models\Client', 'client_id', 'id');
