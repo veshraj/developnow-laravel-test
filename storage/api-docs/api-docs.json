@@ -2700,19 +2700,11 @@
                     },
                     {
                         "properties": {
-                            "product_id": {
-                                "title": "product_id",
-                                "description": "product_id",
-                                "type": "string",
-                                "format": "string",
-                                "example": ""
+                            "product": {
+                                "$ref": "#/components/schemas/SwaggerProduct"
                             },
-                            "client_id": {
-                                "title": "client_id",
-                                "description": "client_id",
-                                "type": "string",
-                                "format": "string",
-                                "example": ""
+                            "client": {
+                                "$ref": "#/components/schemas/SwaggerClient"
                             },
                             "quantity": {
                                 "title": "quantity",
@@ -2726,13 +2718,14 @@
                                 "description": "price",
                                 "type": "integer",
                                 "format": "integer",
-                                "example": 1
+                                "example": 10
                             },
-                            "product": {
-                                "$ref": "#/components/schemas/SwaggerProduct"
-                            },
-                            "client": {
-                                "$ref": "#/components/schemas/SwaggerClient"
+                            "line_item_amount": {
+                                "title": "line_item_amount",
+                                "description": "line_item_amount",
+                                "type": "integer",
+                                "format": "string",
+                                "example": 10
                             }
                         }
                     }
@@ -2771,20 +2764,6 @@
                                 "format": "string",
                                 "example": ""
                             },
-                            "password": {
-                                "title": "password",
-                                "description": "password",
-                                "type": "string",
-                                "format": "string",
-                                "example": ""
-                            },
-                            "remember_token": {
-                                "title": "remember_token",
-                                "description": "remember_token",
-                                "type": "string",
-                                "format": "string",
-                                "example": ""
-                            },
                             "verified_at": {
                                 "title": "verified_at",
                                 "description": "verified_at",
@@ -2803,24 +2782,17 @@
                     "name"
                 ],
                 "properties": {
-                    "id": {
-                        "title": "id",
-                        "description": "id",
-                        "type": "string",
-                        "format": "string",
-                        "example": ""
-                    },
                     "product_id": {
                         "title": "product_id",
                         "description": "product_id",
-                        "type": "string",
+                        "type": "integer",
                         "format": "string",
                         "example": ""
                     },
                     "client_id": {
                         "title": "client_id",
                         "description": "client_id",
-                        "type": "string",
+                        "type": "integer",
                         "format": "string",
                         "example": ""
                     },
@@ -2928,16 +2900,9 @@
                         "format": "string",
                         "example": ""
                     },
-                    "remember_token": {
-                        "title": "remember_token",
-                        "description": "remember_token",
-                        "type": "string",
-                        "format": "string",
-                        "example": ""
-                    },
-                    "verified_at": {
-                        "title": "verified_at",
-                        "description": "verified_at",
+                    "password_confirmation": {
+                        "title": "password_confirmation",
+                        "description": "password_confirmation",
                         "type": "string",
                         "format": "string",
                         "example": ""
@@ -2955,7 +2920,7 @@
                     "id": {
                         "title": "id",
                         "description": "id",
-                        "type": "string",
+                        "type": "integer",
                         "format": "string",
                         "example": ""
                     },
@@ -2976,27 +2941,6 @@
                     "mobile": {
                         "title": "mobile",
                         "description": "mobile",
-                        "type": "string",
-                        "format": "string",
-                        "example": ""
-                    },
-                    "password": {
-                        "title": "password",
-                        "description": "password",
-                        "type": "string",
-                        "format": "string",
-                        "example": ""
-                    },
-                    "remember_token": {
-                        "title": "remember_token",
-                        "description": "remember_token",
-                        "type": "string",
-                        "format": "string",
-                        "example": ""
-                    },
-                    "verified_at": {
-                        "title": "verified_at",
-                        "description": "verified_at",
                         "type": "string",
                         "format": "string",
                         "example": ""

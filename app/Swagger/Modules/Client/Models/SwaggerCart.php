@@ -17,27 +17,27 @@ class SwaggerCart extends BaseModel
 {
     /**
      * @OA\Property(
-     *     title="product_id",
-     *     description="product_id",
+     *     title="product",
+     *     description="product associated with cart item",
      *     format="string",
      *     example=""
      * )
      *
-     * @var    string
+     * @var    \App\Swagger\Modules\Product\Models\SwaggerProduct
      */
-    private $product_id;
+    private $product;
     
     /**
      * @OA\Property(
-     *     title="client_id",
-     *     description="client_id",
+     *     title="client",
+     *     description="client associated with cart item",
      *     format="string",
      *     example=""
      * )
      *
-     * @var    string
+     * @var    \App\Swagger\Modules\Client\Models\SwaggerClient
      */
-    private $client_id;
+    private $client;
     
     /**
      * @OA\Property(
@@ -56,7 +56,7 @@ class SwaggerCart extends BaseModel
      *     title="price",
      *     description="price",
      *     format="integer",
-     *     example=1
+     *     example=10
      * )
      *
      * @var    int
@@ -65,27 +65,16 @@ class SwaggerCart extends BaseModel
     
     /**
      * @OA\Property(
-     *     title="product_id",
-     *     description="product_id",
+     *     title="line_item_amount",
+     *     description="line_item_amount",
      *     format="string",
-     *     example=""
+     *     example=10
      * )
      *
-     * @var  \App\Swagger\Modules\Product\Models\SwaggerProduct
+     * @var  integer
      */
-    private $product;
+    private $line_item_amount;
     
-    /**
-     * @OA\Property(
-     *     title="client_id",
-     *     description="client_id",
-     *     format="string",
-     *     example=""
-     * )
-     *
-     * @var \App\Swagger\Modules\Client\Models\SwaggerClient
-     */
-    private $client;
 }
 
 

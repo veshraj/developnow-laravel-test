@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Swagger\Modules\Client\Requests;
+
 /**
  * @OA\Schema(
  *      title=" Cart  request",
@@ -10,39 +12,28 @@ namespace App\Swagger\Modules\Client\Requests;
  */
 class SwaggerCartRequest
 {
-  /**
-  * @OA\Property(
-  *     title="id",
-  *     description="id",
-  *     format="string",
-  *     example=""
-  * )
-  *
-  * @var    string
-  */
-  private $id;
-  /**
-  * @OA\Property(
-  *     title="product_id",
-  *     description="product_id",
-  *     format="string",
-  *     example=""
-  * )
-  *
-  * @var    string
-  */
-  private $product_id;
-  /**
-  * @OA\Property(
-  *     title="client_id",
-  *     description="client_id",
-  *     format="string",
-  *     example=""
-  * )
-  *
-  * @var    string
-  */
-  private $client_id;
+    /**
+     * @OA\Property(
+     *     title="product_id",
+     *     description="product_id",
+     *     format="string",
+     *     example=""
+     * )
+     *
+     * @var    int
+     */
+    private $product_id;
+    /**
+     * @OA\Property(
+     *     title="client_id",
+     *     description="client_id",
+     *     format="string",
+     *     example=""
+     * )
+     *
+     * @var    integer
+     */
+    private $client_id;
     
     /**
      * @OA\Property(
@@ -67,5 +58,5 @@ class SwaggerCartRequest
      * @var    int
      */
     private $price;
-
+    
 }
