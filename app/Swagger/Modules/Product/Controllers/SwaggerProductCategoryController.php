@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 class SwaggerProductCategoryController extends SwaggerController {
 /**
 * @OA\Get(
-*      path="/api/V1/product-categories",
+*      path="/api/v1/product-categories",
 *      operationId="product_categories-list",
 *      tags={"ProductCategory"},
 *      summary="Get list of product_categories",
@@ -97,7 +97,7 @@ public function store(){}
 
 /**
 * @OA\Get(
-*      path="/apiV1/product-categories//{id}",
+*      path="/api/v1/product-categories//{id}",
 *      operationId="product_categories-details",
 *      tags={"ProductCategory"},
 *      summary="Get product_categories information",

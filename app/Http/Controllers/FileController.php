@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers;
 
 use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;

@@ -1,21 +1,20 @@
 <?php
 
-namespace Modules\Auth\Http\Controllers\API\V1;
+namespace Modules\Client\Http\Controllers;
 
-use App\Constants\MessageCode;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use  Modules\Auth\Repositories\Services\UserService;
-use Modules\Auth\Http\Requests\UserRequest;
+use Modules\Client\Http\Requests\ClientUpdateRequest;
+use  Modules\Client\Repositories\Services\ClientService;
+use Modules\Client\Http\Requests\ClientRequest;
 
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     
     public $service;
     
-    public function __construct(UserService $service)
+    public function __construct(ClientService $service)
     {
         $this->service = $service;
     }
@@ -26,7 +25,7 @@ class UserController extends Controller
     }
     
     
-    public function store(UserRequest $request)
+    public function store(ClientRequest $request)
     {
         return $this->responseCreated($this->service->create($request));
     }
@@ -37,7 +36,7 @@ class UserController extends Controller
         return $this->responseOk($this->service->getById($id));
     }
     
-    public function update(UserRequest $request, $id)
+    public function update(ClientUpdateRequest $request, $id)
     {
         return $this->responseUpdated($this->service->update($request, $id));
     }
