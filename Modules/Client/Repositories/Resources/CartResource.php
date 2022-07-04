@@ -4,6 +4,7 @@ namespace Modules\Client\Repositories\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Product\Repositories\Resources\ProductResource;
 
 class CartResource extends JsonResource
 {
@@ -16,12 +17,14 @@ class CartResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'         => $this->id,
-            'name'       => $this->name,
-            'email'      => $this->email,
-            'mobile'     => $this->mobile,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'id'               => $this->id,
+            'product'          => new ProductResource($this->product),
+            'client'           => new ClientResource($this->client),
+            'quantity'         => $this->quantity,
+            'price'            => $this->price,
+            'line_item_amount' => $this->quantity * $this->price,
+            'created_at'       => $this->created_at,
+            'updated_at'       => $this->updated_at,
         ];
     }
 }
