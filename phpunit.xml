@@ -6,12 +6,17 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+<!--            <directory suffix="Test.php">./tests/Unit</directory>-->
+            <file>tests/Unit/Modules/Product/ProductCategoryUnitTest.php</file>
+            <file>tests/Unit/Modules/Product/ProductUnitTest.php</file>
+            <file>tests/Unit/Modules/Client/ClientUnitTest.php</file>
+            <file>tests/Unit/Modules/Client/CartUnitTest.php</file>
         </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
+
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./app</directory>
@@ -27,5 +32,6 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="DB_CONNECTION" value="test_db"/>
     </php>
 </phpunit>
