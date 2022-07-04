@@ -11,6 +11,7 @@ use App\Traits\CollectionHelper;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use phpDocumentor\Reflection\Types\Boolean;
 
 abstract class BaseRepository
@@ -188,13 +189,6 @@ abstract class BaseRepository
     }
     
     /**
-     * @param $parentQuery
-     * @param  array  $relations
-     * @return mixed
-     */
-//    public function bindEagerLoading($parentQuery, $relations = [])
-    
-    /**
      * @param  Request|null  $request
      * @param  array  $columnList
      * @param  array  $relations
@@ -208,9 +202,14 @@ abstract class BaseRepository
         $this->filter($request);
         $this->paginateModel($request);
         $result = $this->resultSet->getCollection();
-        if (!!$this->getPresenter() && !$this->skipPresenter) {
+//        if (!!$this->getPresenter() && !$this->skipPresenter) {
+//            $result = $result->map(function ($item) {
+//                return $this->getPresenter()->transform($item);
+//            });
+//        }
+        if (method_exists($this, 'resource')) {
             $result = $result->map(function ($item) {
-                return $this->getPresenter()->transform($item);
+                return $this->resource($item);
             });
         }
         $this->resultSet->setCollection($result);
@@ -218,6 +217,13 @@ abstract class BaseRepository
         
         return $this->resultSet;
     }
+    
+    /**
+     * @param $parentQuery
+     * @param  array  $relations
+     * @return mixed
+     */
+//    public function bindEagerLoading($parentQuery, $relations = [])
     
     /**
      * @param $query
@@ -228,6 +234,9 @@ abstract class BaseRepository
         
         $this->manageVisibleHidden($this->resultSet);
     }
+    
+    public abstract function resource(Model $instance)
+    : JsonResource;
     
     public function getSimplePaginate(Request $request = null, array $columnList = [], array $relations = [])
     {
@@ -260,6 +269,9 @@ abstract class BaseRepository
         $data        = $this->bindEagerLoading($data, $relations);
         $this->manageVisibleHidden($data);
         $this->resetQuery();
+        if (method_exists($this, 'resource')) {
+            return $this->resource($data);
+        }
         
         return $data;
     }
@@ -311,6 +323,9 @@ abstract class BaseRepository
         $result = $query->findOrFail($id);
         $this->manageVisibleHidden($result);
         $this->resetQuery();
+        if (method_exists($this, 'resource')) {
+            return $this->resource($result);
+        }
         
         return $result;
     }
@@ -332,6 +347,9 @@ abstract class BaseRepository
         $data = $this->bindEagerLoading($model, $relations);
         $this->manageVisibleHidden($data);
         $this->resetQuery();
+        if (method_exists($this, 'resource')) {
+            return $this->resource($data);
+        }
         
         return $data;
     }
@@ -458,10 +476,13 @@ abstract class BaseRepository
         $result = $query->where($field, $value)->get();
         $this->manageVisibleHidden($result);
         $this->resetQuery();
-        if (!!$this->getPresenter() && !$this->skipPresenter) {
-            $result = $result->map(function ($item) {
-                return $this->getPresenter()->transform($item);
-            });
+//        if (!!$this->getPresenter() && !$this->skipPresenter) {
+//            $result = $result->map(function ($item) {
+//                return $this->getPresenter()->transform($item);
+//            });
+//        }
+        if (method_exists($this, 'resource')) {
+            return $this->resource($result);
         }
         
         return $result;

@@ -92,7 +92,7 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-        'test'=> [
+        'test_db'=> [
             'driver' => 'mysql',
             'url' => env('TEST_DATABASE_URL'),
             'host' => env('TEST_DB_HOST', '127.0.0.1'),

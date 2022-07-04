@@ -1,0 +1,16 @@
+{
+    "name": "Auth",
+    "alias": "auth",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Auth\\Providers\\AuthServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "repos": {
+        "Modules\\Auth\\Repositories\\Contracts\\UserRepositoryInterface": "Modules\\Auth\\Repositories\\UserRepository"
+    }
+}

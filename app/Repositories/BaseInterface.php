@@ -4,7 +4,9 @@ namespace App\Repositories;
 
 use App\Repositories\interfaces\CriteriaInterface;
 use App\Repositories\interfaces\PresenterInterface;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 interface BaseInterface
 {
@@ -52,5 +54,8 @@ interface BaseInterface
     
     public function bulkInsert(array $data)
     : mixed;
+    
+    public function resource(Model $modelData)
+    : JsonResource;
     
 }

@@ -1,0 +1,17 @@
+{
+    "name": "Product",
+    "alias": "product",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Product\\Providers\\ProductServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "repos": {
+        "Modules\\Product\\Repositories\\Contracts\\ProductCategoryRepositoryInterface": "Modules\\Product\\Repositories\\ProductCategoryRepository",
+        "Modules\\Product\\Repositories\\Contracts\\ProductRepositoryInterface": "Modules\\Product\\Repositories\\ProductRepository"
+    }
+}

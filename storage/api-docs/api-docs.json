@@ -1,0 +1,3394 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Developnow Test-Api Swagger Documentation",
+        "description": "Developnow Api Swagger documentation description",
+        "contact": {
+            "email": "veshraj.joshi1@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "Developnow Test API Server"
+        }
+    ],
+    "paths": {
+        "/api/files": {
+            "post": {
+                "tags": [
+                    "File Uploads"
+                ],
+                "summary": "Store new Files",
+                "description": "Returns project Files",
+                "operationId": "api/v1/files-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "description": "File to upload",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "$ref": "#/components/schemas/Image"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/images": {
+            "post": {
+                "tags": [
+                    "Image Upload"
+                ],
+                "summary": "Store new Images",
+                "description": "Returns Image Url",
+                "operationId": "api/v1/images-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "Image to upload",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "$ref": "#/components/schemas/Image"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login User",
+                "description": "Login User",
+                "operationId": "api/v1/login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerLoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/me": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get Authentication Users details",
+                "description": "Returns Authentication user details",
+                "operationId": "api/v1/auth-me",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout the logged in  User",
+                "description": "Logout the logged in user",
+                "operationId": "api/v1/auth-logout",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get list of users",
+                "description": "Returns list of users",
+                "operationId": "users-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current page"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerUserResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Store new users",
+                "description": "Returns the created object of users",
+                "operationId": "users-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users//{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get users information",
+                "description": "Returns users data",
+                "operationId": "users-details",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "users id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update existing users",
+                "description": "Returns updated users data",
+                "operationId": "users-update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerUserUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerUser"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete existing users",
+                "description": "Deletes a record and returns no content",
+                "operationId": "users-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "users id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/carts": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Get list of carts",
+                "description": "Returns list of carts",
+                "operationId": "carts-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current page"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerCartResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Store new carts",
+                "description": "Returns the created object of carts",
+                "operationId": "carts-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerCartRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerCart"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/carts//{id}": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Get carts information",
+                "description": "Returns carts data",
+                "operationId": "carts-details",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "carts id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerCart"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Update existing carts",
+                "description": "Returns updated carts data",
+                "operationId": "carts-update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerCartUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerCart"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Delete existing carts",
+                "description": "Deletes a record and returns no content",
+                "operationId": "carts-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "carts id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/clients": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get list of clients",
+                "description": "Returns list of clients",
+                "operationId": "clients-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current page"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerClientResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Store new clients",
+                "description": "Returns the created object of clients",
+                "operationId": "clients-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerClientRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerClient"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/clients//{id}": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get clients information",
+                "description": "Returns clients data",
+                "operationId": "clients-details",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "clients id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerClient"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update existing clients",
+                "description": "Returns updated clients data",
+                "operationId": "clients-update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerClientUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerClient"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Delete existing clients",
+                "description": "Deletes a record and returns no content",
+                "operationId": "clients-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "clients id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/product-categories": {
+            "get": {
+                "tags": [
+                    "ProductCategory"
+                ],
+                "summary": "Get list of product_categories",
+                "description": "Returns list of product_categories",
+                "operationId": "product_categories-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current page"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerProductCategoryResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/product-categories": {
+            "post": {
+                "tags": [
+                    "ProductCategory"
+                ],
+                "summary": "Store new product_categories",
+                "description": "Returns the created object of product_categories",
+                "operationId": "product_categories-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerProductCategoryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProductCategory"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/apiV1/product-categories//{id}": {
+            "get": {
+                "tags": [
+                    "ProductCategory"
+                ],
+                "summary": "Get product_categories information",
+                "description": "Returns product_categories data",
+                "operationId": "product_categories-details",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product_categories id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProductCategory"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/product-categories/{id}": {
+            "put": {
+                "tags": [
+                    "ProductCategory"
+                ],
+                "summary": "Update existing product_categories",
+                "description": "Returns updated product_categories data",
+                "operationId": "product_categories-update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerProductCategoryUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProductCategory"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ProductCategory"
+                ],
+                "summary": "Delete existing product_categories",
+                "description": "Deletes a record and returns no content",
+                "operationId": "product_categories-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product_categories id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get list of products",
+                "description": "Returns list of products",
+                "operationId": "products-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current page"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page Size"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerProductResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Store new products",
+                "description": "Returns the created object of products",
+                "operationId": "products-create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerProductRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProduct"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/V1/products//{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get products information",
+                "description": "Returns products data",
+                "operationId": "products-details",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "products id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProduct"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update existing products",
+                "description": "Returns updated products data",
+                "operationId": "products-update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SwaggerProductUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "status",
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "description": "Item Created successfully",
+                                            "type": "string"
+                                        },
+                                        "payload": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SwaggerProduct"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete existing products",
+                "description": "Deletes a record and returns no content",
+                "operationId": "products-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "products id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Forbidden"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BadRequest": {
+                "title": "BadRequest",
+                "description": "BadRequest model",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "err"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "400 Bad Reuest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BadRequest"
+                }
+            },
+            "BaseHistory": {
+                "title": "Base History",
+                "description": "Base History model",
+                "properties": {
+                    "message": {
+                        "title": "message",
+                        "description": "Message of the history item",
+                        "type": "string",
+                        "example": "Property has been changed from state1 to state2"
+                    },
+                    "created_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Base History"
+                }
+            },
+            "BaseModel": {
+                "title": "Base Model",
+                "description": "Base model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Base Model"
+                }
+            },
+            "Forbidden": {
+                "title": "Forbidden",
+                "description": "Forbidden model",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "err"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Either this content doesnot exists or you do not have enough priviledges"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Forbidden"
+                }
+            },
+            "MetaData": {
+                "title": "Metadata",
+                "description": "Metadata model",
+                "properties": {
+                    "pagination": {
+                        "title": "Pagination",
+                        "description": "Pagination wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Pagination"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Metadata"
+                }
+            },
+            "NotFound": {
+                "title": "NotFound",
+                "description": "NotFound model",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "err"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "404 Page not found"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "NotFound"
+                }
+            },
+            "Pagination": {
+                "title": "Pagination",
+                "description": "Pagination model",
+                "properties": {
+                    "total": {
+                        "title": "total",
+                        "description": "total",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 100
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "per_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 10
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "last_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 10
+                    },
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "current_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "from": {
+                        "title": "current_page",
+                        "description": "current_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "to",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Pagination"
+                }
+            },
+            "Unauthenticated": {
+                "title": "Unauthenticated",
+                "description": "Unauthenticated model",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "err"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "You are not logged in. Please login first."
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Unauthenticated"
+                }
+            },
+            "Image": {
+                "title": "Images",
+                "description": "Images model",
+                "properties": {
+                    "imageUrl": {
+                        "title": "imageUrl",
+                        "description": "imageUrl",
+                        "type": "string",
+                        "example": "http://xyz.com/abc.jpg"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Images"
+                }
+            },
+            "SwaggerUser": {
+                "title": "User",
+                "description": "User model",
+                "xml": {
+                    "name": "User"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "title": "name",
+                                "description": "name",
+                                "type": "string",
+                                "format": "string",
+                                "example": "John"
+                            },
+                            "email": {
+                                "title": "email",
+                                "description": "Email",
+                                "type": "string",
+                                "format": "email",
+                                "example": "johndoe@gmail.com"
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerLoginRequest": {
+                "title": "Login",
+                "description": "Login body data",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email of the user",
+                        "type": "string",
+                        "example": "johndoe@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Passwrod of the user",
+                        "type": "string",
+                        "example": "password"
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerUserRequest": {
+                "title": " User  request",
+                "description": "  User  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerUserUpdateRequest": {
+                "title": "Update User  request",
+                "description": "Update  User  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Id of User",
+                        "type": "string",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerUserResource": {
+                "title": "UserResource",
+                "description": "User resource",
+                "xml": {
+                    "name": "SwaggerUserResource"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/PaginatedResource"
+                    },
+                    {
+                        "properties": {
+                            "payload": {
+                                "title": "Payload",
+                                "description": "Payload wrapper",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SwaggerUser"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerCart": {
+                "title": "Cart",
+                "description": "Cart model",
+                "xml": {
+                    "name": "Cart"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "product_id": {
+                                "title": "product_id",
+                                "description": "product_id",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "client_id": {
+                                "title": "client_id",
+                                "description": "client_id",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "quantity": {
+                                "title": "quantity",
+                                "description": "quantity",
+                                "type": "integer",
+                                "format": "integer",
+                                "example": 1
+                            },
+                            "price": {
+                                "title": "price",
+                                "description": "price",
+                                "type": "integer",
+                                "format": "integer",
+                                "example": 1
+                            },
+                            "product": {
+                                "$ref": "#/components/schemas/SwaggerProduct"
+                            },
+                            "client": {
+                                "$ref": "#/components/schemas/SwaggerClient"
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerClient": {
+                "title": "Client",
+                "description": "Client model",
+                "xml": {
+                    "name": "Client"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "title": "name",
+                                "description": "name",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "email": {
+                                "title": "email",
+                                "description": "email",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "mobile": {
+                                "title": "mobile",
+                                "description": "mobile",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "password": {
+                                "title": "password",
+                                "description": "password",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "remember_token": {
+                                "title": "remember_token",
+                                "description": "remember_token",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "verified_at": {
+                                "title": "verified_at",
+                                "description": "verified_at",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerCartRequest": {
+                "title": " Cart  request",
+                "description": "  Cart  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "product_id": {
+                        "title": "product_id",
+                        "description": "product_id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "client_id": {
+                        "title": "client_id",
+                        "description": "client_id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerCartUpdateRequest": {
+                "title": "Update Cart  request",
+                "description": "Update  Cart  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "product_id": {
+                        "title": "product_id",
+                        "description": "product_id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "client_id": {
+                        "title": "client_id",
+                        "description": "client_id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerClientRequest": {
+                "title": " Client  request",
+                "description": "  Client  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "mobile": {
+                        "title": "mobile",
+                        "description": "mobile",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "remember_token": {
+                        "title": "remember_token",
+                        "description": "remember_token",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "verified_at": {
+                        "title": "verified_at",
+                        "description": "verified_at",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerClientUpdateRequest": {
+                "title": "Update Client  request",
+                "description": "Update  Client  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "mobile": {
+                        "title": "mobile",
+                        "description": "mobile",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "remember_token": {
+                        "title": "remember_token",
+                        "description": "remember_token",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "verified_at": {
+                        "title": "verified_at",
+                        "description": "verified_at",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerCartResource": {
+                "title": "CartResource",
+                "description": "Cart resource",
+                "xml": {
+                    "name": "SwaggerCartResource"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/PaginatedResource"
+                    },
+                    {
+                        "properties": {
+                            "payload": {
+                                "title": "Payload",
+                                "description": "Payload wrapper",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SwaggerCart"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerClientResource": {
+                "title": "ClientResource",
+                "description": "Client resource",
+                "xml": {
+                    "name": "SwaggerClientResource"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/PaginatedResource"
+                    },
+                    {
+                        "properties": {
+                            "payload": {
+                                "title": "Payload",
+                                "description": "Payload wrapper",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SwaggerClient"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerProduct": {
+                "title": "Product",
+                "description": "Product model",
+                "xml": {
+                    "name": "Product"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "title": "name",
+                                "description": "name",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "price": {
+                                "title": "price",
+                                "description": "price",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            },
+                            "category_id": {
+                                "title": "category_id",
+                                "description": "category_id",
+                                "type": "integer",
+                                "format": "string",
+                                "example": 1
+                            },
+                            "image": {
+                                "title": "image",
+                                "description": "image",
+                                "type": "string",
+                                "format": "string",
+                                "example": "image_url"
+                            },
+                            "inventory_stock": {
+                                "title": "inventory_stock",
+                                "description": "inventory_stock",
+                                "type": "integer",
+                                "format": "string",
+                                "example": 1
+                            },
+                            "category": {
+                                "$ref": "#/components/schemas/SwaggerProductCategory"
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerProductCategory": {
+                "title": "ProductCategory",
+                "description": "ProductCategory model",
+                "xml": {
+                    "name": "ProductCategory"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "title": "name",
+                                "description": "name",
+                                "type": "string",
+                                "format": "string",
+                                "example": ""
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerProductCategoryRequest": {
+                "title": " ProductCategory  request",
+                "description": "  ProductCategory  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerProductCategoryUpdateRequest": {
+                "title": "Update ProductCategory  request",
+                "description": "Update  ProductCategory  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerProductRequest": {
+                "title": " Product  request",
+                "description": "  Product  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "category_id": {
+                        "title": "category_id",
+                        "description": "category_id",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    },
+                    "image": {
+                        "title": "image",
+                        "description": "image",
+                        "type": "string",
+                        "format": "string",
+                        "example": "image_url"
+                    },
+                    "inventory_stock": {
+                        "title": "inventory_stock",
+                        "description": "inventory_stock",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerProductUpdateRequest": {
+                "title": "Update Product  request",
+                "description": "Update  Product  request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "price",
+                        "type": "string",
+                        "format": "string",
+                        "example": ""
+                    },
+                    "category_id": {
+                        "title": "category_id",
+                        "description": "category_id",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    },
+                    "image": {
+                        "title": "image",
+                        "description": "image",
+                        "type": "string",
+                        "format": "string",
+                        "example": "image_url"
+                    },
+                    "inventory_stock": {
+                        "title": "inventory_stock",
+                        "description": "inventory_stock",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "SwaggerProductCategoryResource": {
+                "title": "ProductCategoryResource",
+                "description": "ProductCategory resource",
+                "xml": {
+                    "name": "SwaggerProductCategoryResource"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/PaginatedResource"
+                    },
+                    {
+                        "properties": {
+                            "payload": {
+                                "title": "Payload",
+                                "description": "Payload wrapper",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SwaggerProductCategory"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "SwaggerProductResource": {
+                "title": "ProductResource",
+                "description": "Product resource",
+                "xml": {
+                    "name": "SwaggerProductResource"
+                },
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/PaginatedResource"
+                    },
+                    {
+                        "properties": {
+                            "payload": {
+                                "title": "Payload",
+                                "description": "Payload wrapper",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SwaggerProduct"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "FileRequest": {
+                "title": "Create Files request",
+                "description": "Create Files request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "file_url",
+                        "description": "Id of Files",
+                        "type": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ListResource": {
+                "title": "List",
+                "description": "ListResource model, list without pagination",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "ok"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Items listed successfully"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ListResource"
+                }
+            },
+            "PaginatedResource": {
+                "title": "PaginatedResource",
+                "description": "PaginatedResource model",
+                "properties": {
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "format": "string",
+                        "example": "ok"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "message",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Items listed successfully"
+                    },
+                    "meta_data": {
+                        "title": "Payload",
+                        "description": "Payload wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MetaData"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PaginatedResource"
+                }
+            }
+        }
+    }
+}

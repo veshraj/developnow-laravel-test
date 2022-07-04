@@ -24,7 +24,7 @@ class PaginatedResource
      * @var string
      */
     protected $status;
-
+    
     /**
      * @OA\Property(
      *     title="message",
@@ -36,14 +36,14 @@ class PaginatedResource
      * @var string
      */
     protected $message;
-
+    
     /**
      * @OA\Property(
      *     title="Payload",
      *     description="Payload wrapper"
      * )
      *
-     * @var \App\Swagger\Models\MetaData[]
+     * @var \App\Swagger\Models\Common\MetaData[]
      */
     protected $meta_data;
 }
