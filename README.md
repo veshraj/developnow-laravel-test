@@ -15,6 +15,3 @@ Testcases are written tests folder hit command  to test all cases `php artisan t
 2. I added client and user over here to make it through different, Unfortunately I could not manage it but still those modules were there
 3. I make use of [https://github.com/nWidart/laravel-modules](NWidart/laravel-modules) to develop test in modular structure
 4. The repository pattern has been developed by myself
-
-# Thank You, Looking forward 
-## Let me know if you need more changes in it
