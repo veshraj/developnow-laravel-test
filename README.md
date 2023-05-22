@@ -17,4 +17,4 @@ Testcases are written tests folder hit command  to test all cases `php artisan t
 4. The repository pattern has been developed by myself
 
 # Thank You, Looking forward 
-## Let me if you need more changes in it
+## Let me know if you need more changes in it
